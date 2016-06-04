@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-4 well">
+                <h1>Give me some words!</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="madLibs1">Adjective</label>
+                        <input type="text" class="form-control" id="madLibs1" placeholder="Adjective">
+                    </div>
+                    <div class="form-group">
+                        <label for="madLibs2">Nationality</label>
+                        <input type="text" class="form-control" id="madLibs2" placeholder="Nationality">
+                    </div>
+                    <div class="form-group">
+                        <label for="madLibs3">Person</label>
+                        <input type="text" class="form-control" id="madLibs3" placeholder="Person">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="madLibs4">Noun</label>
+                        <input type="text" class="form-control" id="madLibs4" placeholder="Noun">
+                    </div>
+                    <div class="form-group">
+                        <label for="madLibs5">Adjective</label>
+                        <input type="text" class="form-control" id="madLibs5" placeholder="Adjective">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="madLibs6">Noun</label>
+                        <input type="text" class="form-control" id="madLibs6" placeholder="Noun">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="madLibs7">Adjective</label>
+                        <input type="text" class="form-control" id="madLibs7" placeholder="Adjective">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="madLibs8">Adjective</label>
+                        <input type="text" class="form-control" id="madLibs8" placeholder="Adjective">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="madLibs9">Plural Noun</label>
+                        <input type="text" class="form-control" id="madLibs9" placeholder="Plural Noun">
+                    </div>
+
+                    <button type="button" class="btn btn-default" onclick="makeStory()">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-8">
+                <h1>Your story</h1>
+                <div id="Story">
+                </div>
+            </div>
+
+
+
+            <!--    end row -->
+        </div>
+
+        <!--     end container   -->
+    </div>
+
+
+    <script>
+        var words = [];
+
+        function makeStory() {
+            for (i = 1; i <= 9; i++) {
+                var divid = "madLibs" + i;
+                var myword = document.getElementById(divid).value;
+                if (myword.length < 1 || myword === undefined){
+                    document.getElementById("Story").innerHTML = '<h3 style="color:red"> You forgot a word! </h3>';
+                    document.getElementById(divid).style.border = "2px solid red";
+                } else {  
+                
+                words.push(myword);
+                console.log(words);
+                };
+            };
+            
+            if (words.length < 9){
+                console.log("oops");
+                document.getElementById("Story").innerHTML = '<h3 style="color:red"> You forgot a word! </h3>';
+            } else {
+            printStory();
+            }
+        }
+
+        function printStory() {
+            var story = "<h3>Pizza was invented by a " + words[0] + " " + words[1] + " chef named " + words[2] + ". To make pizza, you need to take a lump of " + words[3] + ", and make a thin, round " + words[4] + " " + words[5] + ". Then you cover it with " + words[6] + " sauce, " + words[7] + " cheese, and fresh chopped " + words[8] + ".</h3>";
+            document.getElementById("Story").innerHTML = story;
+            words = [];
+        }
+    </script>
+
+
+</body>
+
+</html>
